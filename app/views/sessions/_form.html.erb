@@ -1,5 +1,5 @@
-<%= form_with url: registrations_url do |form| %>
-    <h2>Register </h2>
+<%= form_with url: sessions_url do |form| %>
+    <h2>Log In </h2>
 
     <div>
         <%= form.label :username %><br>
@@ -9,11 +9,6 @@
     <div>
         <%= form.label :password %><br>
         <%= form.text_field :password %>
-    </div>
-
-    <div>
-        <%= form.label :password_confirmation %><br>
-        <%= form.text_field :password_confirmation %>
     </div>
 
     <div>
