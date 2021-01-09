@@ -1,7 +1,6 @@
 class RegistrationsController < ApplicationController
     def create
-        user = User.create!(
-            username: params["username"].downcase!,
+        user = User.create!( username: params["username"].downcase,
             password: params["password"],
             password_confirmation: params["password_confirmation"],
         )

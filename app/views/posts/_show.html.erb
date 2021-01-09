@@ -1,0 +1,9 @@
+<div class='posts'>
+    <% @posts.each do |post| %>
+        <p>
+            <%= post.title %> | <%= post.url %> <br>
+            User: <%= post.user_id %> _
+            <%= post.user.username %>
+        </p>
+    <% end %>
+</div>
