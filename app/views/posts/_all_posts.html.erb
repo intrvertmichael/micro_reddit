@@ -1,9 +1,14 @@
 <div class='posts'>
     <% @posts.each do |post| %>
-        <p>
-            <%= post.title %> | <%= post.url %> <br>
-            <%= link_to post.user_id, post %> _
-            <%= post.user.username %>
-        </p>
+        <div class='list-post'>
+            <a href="<%= post.url %>">
+            <%= post.title %> 
+            </a>
+            (<%= URI.parse(post.url).host %>) <br>
+
+            posted <%= time_ago_in_words(post.created_at) %>
+            by: <%= post.user.username.capitalize %>
+            <%= link_to "Comments", post %> 
+        </div>
     <% end %>
 </div>

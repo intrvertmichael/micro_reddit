@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+.welcome-message {
+    border-bottom: 1px dotted black;
+    width: fit-content;
+    padding-bottom: 10px;
+}
