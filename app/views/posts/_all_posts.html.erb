@@ -2,7 +2,7 @@
     <% @posts.each do |post| %>
         <p>
             <%= post.title %> | <%= post.url %> <br>
-            User: <%= post.user_id %> _
+            <%= link_to post.user_id, post %> _
             <%= post.user.username %>
         </p>
     <% end %>

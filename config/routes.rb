@@ -3,8 +3,14 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
 
+  resources :posts
+
   delete :logout, to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"
 
+  get "/posts/:id", to: "posts#show"
+
   root to: "static#home"
+
+
 end
