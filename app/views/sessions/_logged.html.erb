@@ -1,7 +1,7 @@
 
+
 <p>
     <strong> Logged In ? </strong>
-    <% puts "-> @loggeduser" %>
-    <% puts @username.inspect %>
-    <%= @username || "not logged in" %>
+    <%= @current_user? "hello " + @current_user.username : "Not logged in" %>
+    <%= link_to "Log Out", logout_path, method: :delete %>
 </p>
