@@ -1,8 +1,12 @@
 
 <h1> Micro Reddit </h1>
+<div class='logged'>
+    <%= @current_user? "hello " + @current_user.username : "Not logged in" %>
 
-<p> Test: <%= @test %> </p>
-
-<%= render 'registrations/form' %>
-<%= render 'sessions/form' %>
-<%= render 'sessions/logged' %>
+    <% if @current_user %>
+        <%= link_to "Log Out", logout_path, method: :delete %>
+    <% else %>
+        <%= render 'registrations/form' %>
+        <%= render 'sessions/form' %>
+    <% end %>
+</div>

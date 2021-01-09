@@ -1,7 +1,0 @@
-
-
-<p>
-    <strong> Logged In ? </strong>
-    <%= @current_user? "hello " + @current_user.username : "Not logged in" %>
-    <%= link_to "Log Out", logout_path, method: :delete %>
-</p>

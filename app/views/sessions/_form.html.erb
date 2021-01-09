@@ -1,17 +1,20 @@
+
 <%= form_with url: sessions_url do |form| %>
+<div class="login-form">
     <h3>Log In </h3>
 
     <div>
-        <%= form.label :username %><br>
+        <%= form.label :username %>
         <%= form.text_field :username %>
     </div>
 
     <div>
-        <%= form.label :password %><br>
-        <%= form.text_field :password %>
+        <%= form.label :password %>
+        <%= form.password_field :password %>
     </div>
 
     <div>
     <%= form.submit %>
     </div>
+</div>
 <% end %>
