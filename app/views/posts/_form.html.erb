@@ -1,19 +1,40 @@
-<%= form_with url: posts_url do |form| %>
-<div class="new-post-form">
-    <h3>New Post</h3>
+<div class="post-form">
+<% if @post %>
+    <h2> Edit Post </h2>
 
-    <div>
-        <%= form.label :title %><br>
-        <%= form.text_field :title %>
-    </div>
+    <%= form_for @post do |form|%>
+        <div>
+            <%= form.label :title %><br>
+            <%= form.text_field :title, required: true, value:@post.title %>
+        </div>
 
-    <div>
-        <%= form.label :url %> <br>
-        <%= form.text_field :url %>
-    </div>
+        <div>
+            <%= form.label :url %> <br>
+            <%= form.text_field :url, required: true, value:@post.url %>
+        </div>
 
-    <div>
-    <%= form.submit %>
-    </div>
-</div>
+        <div>
+        <%= form.submit %>
+        </div>
+    <% end %>
+
+<% else %>
+    <h2> New Post </h2>
+
+    <%= form_with url: posts_url do |form| %>
+        <div>
+            <%= form.label :title %><br>
+            <%= form.text_field :title, required: true %>
+        </div>
+
+        <div>
+            <%= form.label :url %> <br>
+            <%= form.text_field :url, required: true  %>
+        </div>
+
+        <div>
+        <%= form.submit %>
+        </div>
+    <% end %>
 <% end %>
+</div>

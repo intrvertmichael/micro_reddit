@@ -1,11 +1,9 @@
 <p class='welcome-message'>
-
     <%=
         "Hello User " + @current_user.id.to_s + ": " + @current_user.username.capitalize
     %>
-
-    <%= render 'posts/form' %>
 </p>
 
-
 <%= link_to "Log Out", logout_path, method: :delete %>
+
+<%= render 'posts/form' %>

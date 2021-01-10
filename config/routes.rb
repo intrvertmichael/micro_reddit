@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get :logged_in, to: "sessions#logged_in"
 
   get "/posts/:id", to: "posts#show"
+  put :edit_post, to: "posts#update"
 
   root to: "static#home"
 
