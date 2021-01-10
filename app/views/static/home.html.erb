@@ -2,12 +2,6 @@
 <h1> Micro Reddit </h1>
 
 <div class='logged'>
-
-    <p class='welcome-message'>
-    <%= @current_user? " Hello User " +@current_user.id.to_s + ": " + @current_user.username.capitalize : "Not logged in" %>
-    </p>
-
-
     <% if @current_user %>
         <%= render 'static/logged_in' %>
     <% else %>

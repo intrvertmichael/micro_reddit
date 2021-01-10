@@ -1,0 +1,19 @@
+<%= form_with url: posts_url do |form| %>
+<div class="new-post-form">
+    <h3>New Post</h3>
+
+    <div>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+    </div>
+
+    <div>
+        <%= form.label :url %> <br>
+        <%= form.text_field :url %>
+    </div>
+
+    <div>
+    <%= form.submit %>
+    </div>
+</div>
+<% end %>

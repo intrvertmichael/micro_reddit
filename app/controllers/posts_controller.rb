@@ -2,9 +2,9 @@ class PostsController < ApplicationController
 
     def create
         post = Post.create(
-            title: params["username"].downcase,
-            url: params["password"],
-            user_id: @current_user.id
+            user_id: session[:user_id],
+            title: params["title"],
+            url: params["url"]
         )
 
         if post
