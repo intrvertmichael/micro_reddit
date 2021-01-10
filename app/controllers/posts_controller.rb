@@ -19,26 +19,43 @@ class PostsController < ApplicationController
     end
 
     def edit
-        @post = Post.find(params[:id])
+        if belongs_to_user
+            @post = Post.find(params[:id])
+        else
+            redirect_to root_path
+        end
     end
 
     def update
-        @post = Post.find(params[:id])
+        if belongs_to_user
+            @post = Post.find(params[:id])
 
-        if @post.update(
-            title: params["post"]["title"],
-            url: params["post"]["url"]
-        )
-            redirect_to @post
+            if @post.update(
+                title: params["post"]["title"],
+                url: params["post"]["url"]
+            )
+                redirect_to @post
+            else
+                render json: { status: 500 }
+            end
         else
-            render json: { status: 500 }
+            redirect_to root_path
         end
     end
 
     def destroy
-        @post = Post.find(params[:id])
-        @post.destroy
+        if belongs_to_user
+            @post = Post.find(params[:id])
+            @post.destroy
+        end
+            redirect_to root_path
+    end
 
-        redirect_to root_path
+    def belongs_to_user
+        @post = Post.find(params[:id])
+        puts "-> testing"
+        puts session[:user_id]
+        puts @post.user.id
+        return (session[:user_id] == @post.user.id.to_s)
     end
 end
