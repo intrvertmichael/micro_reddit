@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
 
+  resources :users
   resources :posts
 
   delete :logout, to: "sessions#logout"
