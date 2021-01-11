@@ -1,13 +1,24 @@
 <div class='posts'>
     <% @posts.each do |post| %>
         <div class='list-post'>
-            <a href="<%= post.url %>">
+
+            <%= render 'votes/votes', :post => post  %>
+
+            <a href="<%= post.url %>" target=”_blank”>
             <%= post.title %>
             </a>
             (<%= URI.parse(post.url).host %>) <br>
 
-            posted <%= time_ago_in_words(post.created_at) %> ago
-            by: <%= post.user.username.capitalize %>
+            <% total_points = post.vote.sum(&:value) %>
+
+            <% if total_points > 0 %>
+                <%= total_points %> points
+            <% end %>
+
+            posted
+            <%= time_ago_in_words(post.created_at) %>
+            ago by:
+            <%= post.user.username.capitalize %>
             <%= link_to "Comments", post %>
         </div>
     <% end %>
