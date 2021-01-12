@@ -1,6 +1,8 @@
 
 <p>
-<%= link_to "Upvote", vote_path(@post, :id => post.id, :change => "up"), method: :put %>
-<%= link_to "Downvote", vote_path(@post, :id => post.id, :change => "down"), method: :put %>
-<%= post.vote.map(&:value) %>
+    <%= link_to "Upvote", vote_path(@post, :id => post.id, :change => "up"), method: :put %>
+
+    <%= link_to "Downvote", vote_path(@post, :id => post.id, :change => "down"), method: :put %>
+
+    <%= post.votes.map(&:value) %>
 </p>

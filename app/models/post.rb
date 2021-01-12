@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :vote
+  has_many :votes
+  has_many :comments
 end

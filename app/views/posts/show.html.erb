@@ -28,3 +28,12 @@
                 data: { confirm: "Are you sure?" }
     %></li>
 <% end %>
+
+<p>
+
+
+<% @post.comments.each do |comment| %>
+    <%= comment.user.username.capitalize %> : 
+    <%= comment.body %>
+<% end %>
+</p>
