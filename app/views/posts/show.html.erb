@@ -1,8 +1,7 @@
 <br> <%= link_to "Index", root_path %>
 
 <h1>
-    <%= @post.title %>
-    (<%= @post.url %>)
+    <%= @post.title %> (<%= @post.url %>)
 </h1>
 
 <p>
@@ -29,11 +28,4 @@
     %></li>
 <% end %>
 
-<p>
-
-
-<% @post.comments.each do |comment| %>
-    <%= comment.user.username.capitalize %> : 
-    <%= comment.body %>
-<% end %>
-</p>
+<%= render 'comment/all_comments', :post => @post %>
