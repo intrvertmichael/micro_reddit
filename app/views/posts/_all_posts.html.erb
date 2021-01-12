@@ -5,7 +5,7 @@
     <% # sorted_list = @posts.sort{|a,b| b.updated_at <=> a.updated_at} %>
 
     <% # most points sorting: %>
-    <% # sorted_list = @posts.sort{|a,b| b.vote.sum(&:value) <=> a.vote.sum(&:value)} %>
+    <% sorted_list = @posts.sort{|a,b| b.vote.sum(&:value) <=> a.vote.sum(&:value)} %>
 
     <% sorted_list.each do |post| %>
         <div class='list-post'>
