@@ -1,0 +1,20 @@
+<% if session[:user_id]%>
+<%= render 'comments/form', :post => @post %>
+<% end %>
+
+<% post.comments.each do |comment| %>
+    <p>
+        <%= comment.user.username.capitalize %> : 
+        <%= comment.body %>
+
+
+        <% if session[:user_id] == comment.user_id.to_s%>
+            <%= link_to "Edit", edit_comment_path(:comment_id => comment.id) %>
+
+            <%= link_to "Destroy", comment_path(:comment_id => comment.id),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" }
+            %>
+        <% end %>
+    </p>
+<% end %>

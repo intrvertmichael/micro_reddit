@@ -53,7 +53,6 @@ class PostsController < ApplicationController
 
     def belongs_to_user
         @post = Post.find(params[:id])
-        puts "-> testing"
         puts session[:user_id]
         puts @post.user.id
         return (session[:user_id] == @post.user.id.to_s)

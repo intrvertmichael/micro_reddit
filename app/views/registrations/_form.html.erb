@@ -4,21 +4,24 @@
 
     <div>
         <%= form.label :username %><br>
-        <%= form.text_field :username %>
+        <%= form.text_field :username, required: true %>
     </div>
 
     <div>
         <%= form.label :password %><br>
-        <%= form.password_field :password %>
+        <%= form.password_field :password, required: true %>
     </div>
 
     <div>
         <%= form.label :password_confirmation %><br>
-        <%= form.password_field :password_confirmation %>
+        <%= form.password_field :password_confirmation, required: true %>
     </div>
 
     <div>
     <%= form.submit %>
     </div>
 </div>
+
+<%= @err.inspect %>
+
 <% end %>
