@@ -7,10 +7,13 @@
     <% # most points sorting: %>
     <% sorted_list = @posts.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)} %>
 
-    <% sorted_list.each do |post| %>
+    <% sorted_list.each_with_index do |post, index| %>
         <div class='list-post'>
 
+            <%= index + 1 %>.
+
             <%= render 'votes/votes', :post => post  %>
+
 
             <a href="<%= post.url %>" target=”_blank”>
             <%= post.title %>
@@ -19,7 +22,9 @@
 
             <% total_points = post.votes.sum(&:value) %>
 
-            <% if total_points > 0 %>
+            <% if total_points == 1 %>
+                <%= total_points %> point
+            <% elsif total_points > 0 %>
                 <%= total_points %> points
             <% end %>
 

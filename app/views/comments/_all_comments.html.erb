@@ -3,6 +3,9 @@
 <% end %>
 
 <% post.comments.each do |comment| %>
+
+    <%= render 'comment_votes/comment_votes', :comment => comment %>
+
     <p>
         <%= comment.user.username.capitalize %> : 
         <%= comment.body %>

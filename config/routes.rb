@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :votes
   resources :comments
+  resources :comment_votes
 
   delete :logout, to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"

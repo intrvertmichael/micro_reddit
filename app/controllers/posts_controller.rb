@@ -46,6 +46,8 @@ class PostsController < ApplicationController
     def destroy
         if belongs_to_user
             @post = Post.find(params[:id])
+            Vote.where(post_id: params[:id]).delete_all
+            Comment.where(post_id: params[:id]).delete_all
             @post.destroy
         end
             redirect_to root_path

@@ -1,0 +1,22 @@
+
+<p>
+    <%= link_to "Upvote", comment_vote_path(
+        comment,
+        :id => comment.post.id,
+        :comment_id => comment.id,
+        :change => "up"
+        ), method: :put
+    %>
+
+    <%= link_to "Downvote", comment_vote_path(
+        comment,
+        :id => comment.post.id,
+        :comment_id => comment.id,
+        :change => "down"
+        ), method: :put
+    %>
+
+    Votes:
+    <%= comment.comment_votes.sum(&:value)%>
+    <%= comment.comment_votes.map(&:value)%>
+</p>
