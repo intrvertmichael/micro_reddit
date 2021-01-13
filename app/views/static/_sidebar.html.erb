@@ -1,0 +1,7 @@
+<div class='sidebar'>
+    <% if @current_user %>
+        <%= render 'static/logged_in' %>
+    <% else %>
+        <%= render 'static/logged_out' %>
+    <% end %>
+</div>

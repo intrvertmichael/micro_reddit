@@ -105,6 +105,7 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
+    normalize-rails (4.1.1)
     public_suffix (4.0.6)
     puma (5.1.1)
       nio4r (~> 2.0)
@@ -211,6 +212,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  normalize-rails
   puma (~> 5.0)
   rack-cors
   rack-mini-profiler (~> 2.0)

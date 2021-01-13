@@ -1,12 +1,10 @@
 
-<h1> Micro Reddit </h1>
+<div class='container'>
 
-<div class='logged'>
-    <% if @current_user %>
-        <%= render 'static/logged_in' %>
-    <% else %>
-        <%= render 'static/logged_out' %>
-    <% end %>
+    <%= render 'static/header' %>
+
+    <div class='content-container'>
+        <%= render 'posts/all_posts' %>
+        <%= render 'static/sidebar' %>
+    </div>
 </div>
-
-<%= render 'posts/all_posts' %>

@@ -1,8 +1,23 @@
 
-<p>
-    <%= link_to "Upvote", vote_path(@post, :id => post.id, :change => "up"), method: :put %>
+<div class='votes'>
 
-    <%= link_to "Downvote", vote_path(@post, :id => post.id, :change => "down"), method: :put %>
+    <% v = Vote.find_by(post_id: post.id, user_id: session[:user_id]) %>
 
-    <%= post.votes.map(&:value) %>
-</p>
+    <% upvote_value = v ? v.value : ""  %>
+
+    <% if upvote_value == 1 %>
+        <%= link_to image_tag("arrow_orange.png"), vote_path(@post, :id => post.id, :change => "up"), method: :put, :class => "upvote" %>
+    <% else %>
+        <%= link_to image_tag("arrow.png"), vote_path(@post, :id => post.id, :change => "up"), method: :put, :class => "upvote" %>
+    <% end%>
+
+
+    <% if upvote_value == -1 %>
+        <%= link_to image_tag("arrow_orange.png"), vote_path(@post, :id => post.id, :change => "down"), method: :put, :class => "downvote" %>
+    <% else %>
+        <%= link_to image_tag("arrow.png"), vote_path(@post, :id => post.id, :change => "down"), method: :put, :class => "downvote" %>
+    <% end %>
+
+
+    <%# post.votes.map(&:value) %>
+</div>
