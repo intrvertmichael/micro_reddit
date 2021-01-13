@@ -103,18 +103,19 @@ a:visited {
     align-items: flex-start;
     box-sizing: border-box;
 
-    .sidebar {
-        width: 250px;
-        margin-left: 20px;
-        box-sizing: border-box;
-        border: 2px solid #73a1ca;
-        padding: 5px;
-        box-sizing: border-box;
-    }
-
     .posts {
         width: 100%;
         // border: 1px solid blue;
     }
+}
+
+.sidebar {
+    width: 250px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    border: 2px solid #73a1ca;
+    padding: 5px;
+    box-sizing: border-box;
+    height: fit-content;
 }
 

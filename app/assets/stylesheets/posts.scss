@@ -15,31 +15,63 @@
         text-align: right;
         width: 35px;
     }
+}
 
-    .post {
+.post {
+    width: 100%;
+
+    .top-line {
+        color: #848484;
+        font-size: smaller;
+
+        a {
+            font-size: medium;
+        }
+    }
+
+    .bottom-line {
+        color: gray;
+        font-size: x-small;
+    }
+
+    .comments {
+        background: #f0f0f0;
+        color: #848484;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.post-view {
+    padding: 0px 5px;
+    box-sizing: border-box;
+
+    .post-view-container {
         width: 100%;
+        display: flex;
+        flex-direction: row;
 
-        .top-line {
-            color: #848484;
-            font-size: smaller;
+        .post-view-content {
+            width: 100%;
 
-            a {
-                font-size: medium;
-            }
-        }
+            .post-view-buttons {
+                display: flex;
+                flex-direction: row;
+                padding: 0px;
 
-        .bottom-line {
-            color: gray;
-            font-size: x-small;
-        }
+                li {
+                    list-style-type: none;
+                    padding: 5px;
+                    box-sizing: border-box;
 
-        .comments {
-            background: #f0f0f0;
-            color: #848484;
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
+                    a {
+                        text-decoration: none;
+                        color: blue;
+                    }
+                }
             }
         }
     }

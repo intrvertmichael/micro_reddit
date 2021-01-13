@@ -1,23 +1,12 @@
-<% if session[:user_id]%>
-<%= render 'comments/form', :post => @post %>
-<% end %>
+<div class='all-comments'>
+    <h2> Comments </h2>
 
-<% post.comments.each do |comment| %>
-
-    <%= render 'comment_votes/comment_votes', :comment => comment %>
-
-    <p>
-        <%= comment.user.username.capitalize %> : 
-        <%= comment.body %>
+    <% if session[:user_id]%>
+        <%= render 'comments/form', :post => @post %>
+    <% end %>
 
 
-        <% if session[:user_id] == comment.user_id.to_s%>
-            <%= link_to "Edit", edit_comment_path(:comment_id => comment.id) %>
-
-            <%= link_to "Destroy", comment_path(:comment_id => comment.id),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" }
-            %>
-        <% end %>
-    </p>
-<% end %>
+    <% post.comments.each do |comment| %>
+        <%= render 'comments/comment', :comment => comment  %>
+    <% end %>
+</div>

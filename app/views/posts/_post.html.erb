@@ -21,7 +21,10 @@
         posted
         <%= time_ago_in_words(post.created_at) %>
         ago by
-        <%= post.user.username.capitalize %>
+
+        <% name = post.user.username.capitalize %>
+
+        <%= link_to name, user_path(post, :author_id => post.user.id) %>
 
         <% c_label = post.comments.count.to_s + " Comments"  %>
 
