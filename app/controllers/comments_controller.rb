@@ -5,9 +5,13 @@ class CommentsController < ApplicationController
         if session[:user_id]
             comment = Comment.create(post_id: params["post_id"], user_id: session[:user_id], body: params["body"])
 
+            if comment.valid?
+                redirect_to @post
+            else
+                @error_message = comment.errors.full_messages
+                redirect_to @post, notice: @error_message
+            end
         end
-
-        redirect_to @post
     end
 
     def edit

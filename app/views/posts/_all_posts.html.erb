@@ -1,12 +1,5 @@
 <div class='posts'>
-    <% sorted_list = @posts %>
-    <% # newest at top sorting: %>
-    <% # sorted_list = @posts.sort{|a,b| b.updated_at <=> a.updated_at} %>
-
-    <% # most points sorting: %>
-    <% sorted_list = @posts.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)} %>
-
-    <% sorted_list.each_with_index do |post, index| %>
+    <% @posts.each_with_index do |post, index| %>
         <div class='list-post'>
             <div class='index'>
                 <%= index + 1 %>.

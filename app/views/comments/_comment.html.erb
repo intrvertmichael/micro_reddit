@@ -8,18 +8,16 @@
                 <%= link_to comment.user.username.capitalize, user_path(:author_id => comment.user.id).to_s %>
             </strong>
 
-            <%= comment.comment_votes.sum(&:value)%> points
+            <%= comment.points %> points
             <%= time_ago_in_words(comment.created_at) %> ago
         </div>
 
         <p>
-        <%= comment.body %> <br>
-        <%= comment.comment_votes.map(&:value)%>
-
+            <%= comment.body %> <br>
+            <%= comment.comment_votes.map(&:value)%>
         </p>
 
         <div class='comment-content-links'>
-
             <% if session[:user_id] == comment.user_id.to_s%>
                 <%= link_to "Edit", edit_comment_path(:comment_id => comment.id) %>
 

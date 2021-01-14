@@ -1,12 +1,13 @@
 <div class='all-comments'>
+
     <h2> Comments </h2>
 
     <% if session[:user_id]%>
         <%= render 'comments/form', :post => @post %>
     <% end %>
 
-
     <% post.comments.each do |comment| %>
         <%= render 'comments/comment', :comment => comment  %>
     <% end %>
+
 </div>

@@ -1,10 +1,14 @@
+
 <div class="post-form">
+
 <% if @post && session[:user_id] && @post.user_id == session[:user_id].to_i %>
+
     <h2> Edit Post </h2>
 
     <%= form_for @post do |form|%>
+
         <div>
-            <%= form.label :title %><br>
+            <%= form.label :title %> <br>
             <%= form.text_field :title, required: true, value:@post.title %>
         </div>
 
@@ -14,14 +18,17 @@
         </div>
 
         <div>
-        <%= form.submit %>
+            <%= form.submit %>
         </div>
+
     <% end %>
 
 <% elsif @post %>
-    <div>
-    </div>
+
+    <div>  </div>
+
 <% else %>
+
     <h2> New Post </h2>
 
     <%= form_with url: posts_url do |form| %>
@@ -39,5 +46,7 @@
         <%= form.submit %>
         </div>
     <% end %>
+
 <% end %>
+
 </div>

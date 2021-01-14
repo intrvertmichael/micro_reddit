@@ -27,6 +27,7 @@ body, html {
 
 a {
     color: blue;
+    text-decoration: none;
 }
 
 a:visited {
@@ -119,3 +120,11 @@ a:visited {
     height: fit-content;
 }
 
+.error {
+    background: rgb(255, 225, 225);
+    color: red;
+    width: 100%;
+    padding: 30px 0px;
+    box-sizing: border-box;
+    text-align: center;
+}

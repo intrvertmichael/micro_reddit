@@ -7,10 +7,11 @@ class PostsController < ApplicationController
             url: params["url"]
         )
 
-        if post
+        if post.valid?
             redirect_to root_path
         else
-            render json: { status: 500 }
+            @error_message = post.errors.full_messages
+            redirect_to root_path, notice: @error_message
         end
     end
 
@@ -54,13 +55,12 @@ class PostsController < ApplicationController
             Comment.where(post_id: params[:id]).delete_all
             @post.destroy
         end
-            redirect_to root_path
+
+        redirect_to root_path
     end
 
     def belongs_to_user
         @post = Post.find(params[:id])
-        puts session[:user_id]
-        puts @post.user.id
         return (session[:user_id] == @post.user.id.to_s)
     end
 end

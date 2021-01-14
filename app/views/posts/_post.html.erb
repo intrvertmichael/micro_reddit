@@ -2,20 +2,20 @@
 <%= render 'votes/votes', :post => post  %>
 
 <div class='post'>
+
     <div class='top-line'>
         <a href="<%= post.url %>" target=”_blank”>
-        <%= post.title %>
+            <%= post.title %>
         </a>
+
         (<%= URI.parse(post.url).host %>)
     </div>
 
     <div class='bottom-line'>
-        <% total_points = post.votes.sum(&:value) %>
-
-        <% if total_points == 1 || total_points == -1 %>
-            <%= total_points %> point
+        <% if post.points == 1 || post.points == -1 %>
+            <%= post.points %> point
         <% else %>
-            <%= total_points %> points
+            <%= post.points %> points
         <% end %>
 
         posted

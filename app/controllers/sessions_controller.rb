@@ -7,37 +7,17 @@ class SessionsController < ApplicationController
                 .try(:authenticate, params["password"])
 
         if user
-            session[:user_id] = user.id.to_s
-
-            # render json: {
-            #     logged_in: true,
-            #     user: user,
-            #     session_user_id: session[:user_id]
-            # }
-
+            session[:user_id] = user.id
             redirect_to root_path
         else
-            render json: { status: 401 }
-        end
-    end
-
-    def logged_in
-        if @current_user
-            render json: {
-                logged_in: true,
-                user: @current_user
-            }
-        else
-            render json: {
-                logged_in: false
-            }
+            # render json: { status: 401 }
+            redirect_to root_path, notice: ["Log In Failed"]
         end
     end
 
     def logout
         puts "logout"
         reset_session
-        # render json: { status: 200, logged_out: true }
         redirect_to root_path
     end
 
