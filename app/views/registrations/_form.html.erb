@@ -1,25 +1,22 @@
+<div class='register-form'>
 <%= form_with url: registrations_url do |form| %>
-<div class="register-form">
+
     <h3>Register </h3>
 
-    <div>
-        <%= form.label :username %><br>
-        <%= form.text_field :username, required: true %>
-    </div>
+    <%= form.label :username %>
+    <%= form.text_field :username, required: true %>
 
-    <div>
-        <%= form.label :password %><br>
-        <%= form.password_field :password, required: true %>
-    </div>
 
-    <div>
-        <%= form.label :password_confirmation %><br>
-        <%= form.password_field :password_confirmation, required: true %>
-    </div>
 
-    <div>
-        <%= form.submit %>
-    </div>
-</div>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+
+
+
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, required: true %>
+
+    <%= form.submit %>
 
 <% end %>
+</div>
