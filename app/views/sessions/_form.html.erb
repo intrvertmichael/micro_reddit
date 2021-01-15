@@ -3,13 +3,13 @@
 
     <h3> Log In </h3>
 
-    <%= form.label :username %>
+    <%= form.label :username, "username" %>
     <%= form.text_field :username, required: true %>
 
-    <%= form.label :password %>
+    <%= form.label :password, "password" %>
     <%= form.password_field :password, required: true %>
 
-    <%= form.submit %>
+    <%= form.submit "Log In" %>
 
 <% end %>
 </div>

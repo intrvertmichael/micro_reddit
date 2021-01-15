@@ -3,20 +3,20 @@
 
     <h3>Register </h3>
 
-    <%= form.label :username %>
+    <%= form.label :username, "username" %>
     <%= form.text_field :username, required: true %>
 
 
 
-    <%= form.label :password %>
+    <%= form.label :password, "password" %>
     <%= form.password_field :password, required: true %>
 
 
 
-    <%= form.label :password_confirmation %>
+    <%= form.label :password_confirmation, "re-enter password" %>
     <%= form.password_field :password_confirmation, required: true %>
 
-    <%= form.submit %>
+    <%= form.submit "Register" %>
 
 <% end %>
 </div>

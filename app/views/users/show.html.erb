@@ -1,8 +1,24 @@
 
-<br> <%= link_to "Index", root_path %>
+<div class='profile-view'>
 
-<p>
-    <%= @author.id %>
-    <%= @author.username %>
-    <%= @author.created_at %>
-</p>
+    <%= render 'static/header' %>
+
+    <div class='profile-container'>
+
+        <div class='profile'>
+            <div class='profile-top'>
+                <h3> <%= @author.username %> </h3>
+            </div>
+            member since: <%= @author.created_at.strftime("%B %d, %Y") %> <br>
+            post points: <%= @karma %> <br>
+
+            <div class='stats'>
+                stats
+            </div>
+            total posts: <%= @author.post_amount %> <br>
+            total comments: <%= @author.comment_amount %> <br>
+        </div>
+
+        <%= render 'static/sidebar' %>
+    </div>
+</div>
