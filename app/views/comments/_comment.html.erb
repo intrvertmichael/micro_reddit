@@ -18,7 +18,7 @@
         </p>
 
         <div class='comment-content-links'>
-            <% if session[:user_id] == comment.user_id.to_s%>
+            <% if session[:user_id] == comment.user_id%>
                 <%= link_to "Edit", edit_comment_path(:comment_id => comment.id) %>
 
                 <%= link_to "Destroy", comment_path(:comment_id => comment.id),

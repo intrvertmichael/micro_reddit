@@ -18,6 +18,8 @@ class PostsController < ApplicationController
     def show
         @post = Post.find(params[:id])
 
+        @comments = @post.comments.sort{|a,b| b.comment_votes.sum(&:value) <=> a.comment_votes.sum(&:value)}
+
         if session[:user_id]
             @current_user = User.find(session[:user_id])
         end
@@ -62,5 +64,15 @@ class PostsController < ApplicationController
     def belongs_to_user
         @post = Post.find(params[:id])
         return (session[:user_id] == @post.user.id.to_s)
+    end
+
+    def sort
+        @post = Post.find(params[:id])
+        if params[:sort_type] == "new"
+            @comments = @post.comments.sort{|a,b| b.updated_at <=> a.updated_at}
+        elsif params[:sort_type] == "hot"
+            @comments = @post.comments.sort{|a,b| b.comment_votes.sum(&:value) <=> a.comment_votes.sum(&:value)}
+        end
+        render "show"
     end
 end

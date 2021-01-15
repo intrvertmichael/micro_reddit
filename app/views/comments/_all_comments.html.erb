@@ -1,3 +1,5 @@
+
+
 <div class='all-comments'>
 
     <h2> Comments </h2>
@@ -6,7 +8,12 @@
         <%= render 'comments/form', :post => @post %>
     <% end %>
 
-    <% post.comments.each do |comment| %>
+    <div class='comment-sort'>
+        <%= link_to "hot", sort_comment_path(sort_type:"hot") %>
+        <%= link_to "new", sort_comment_path(sort_type:"new") %>
+    </div>
+
+    <% @comments.each do |comment| %>
         <%= render 'comments/comment', :comment => comment  %>
     <% end %>
 
