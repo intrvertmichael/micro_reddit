@@ -10,9 +10,18 @@
     <% end %>
 
     <div class='posts-nav'>
-        view more:
-        <%= link_to "« back", root_path(page: @page - 1 ) %>
-        <%= link_to "next »", root_path(page: @page + 1 ) %>
+
+        <% if @page > 0 || @page < @final_page%>
+            view more:
+        <% end %>
+
+        <% if @page > 0 %>
+            <%= link_to "« back", root_path(page: @page - 1 ) %>
+        <% end %>
+
+        <% if @page < @final_page %>
+            <%= link_to "next »", root_path(page: @page + 1 ) %>
+        <% end %>
     </div>
 
 </div>

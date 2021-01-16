@@ -33,15 +33,15 @@ class StaticController < ApplicationController
 
 
     def limit_posts
-        amount_shown = 5
+        amount_shown = 10
 
         param_page = params[:page].to_i
-        final_page = $all_posts.count / amount_shown
+        @final_page = $all_posts.count / amount_shown
 
         if param_page < 1
             @page = 0
-        elsif param_page > final_page
-            @page = final_page
+        elsif param_page > @final_page
+            @page = @final_page
         else
             @page = param_page
         end
