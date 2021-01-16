@@ -12,8 +12,17 @@
         </div>
 
         <div class='nav-bottom'>
-            <%= link_to "hot", sort_path(sort_type:"hot") %>
-            <%= link_to "new", sort_path(sort_type:"new") %>
+            <div class="sort-links">
+                <%= link_to "top", sort_path(sort_type:"top") %>
+                <%= link_to "new", sort_path(sort_type:"new") %>
+                <%= link_to "hot", sort_path(sort_type:"hot") %>
+            </div>
+            <div class='search'>
+                <%= form_with url: search_url do |form| %>
+                    <%= form.text_field :search_text, required: true  %>
+                    <%= form.submit "search" %>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>

@@ -21,16 +21,37 @@ class StaticController < ApplicationController
             $all_posts = Post.all.sort{|a,b| b.updated_at <=> a.updated_at}
         elsif params[:sort_type] == "hot"
             $all_posts = Post.all.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)}
+        elsif params[:sort_type] == "top"
+            $all_posts = Post.all.sort{ |a,b|
+                b.votes.sum(&:value) <=> a.votes.sum(&:value)
+            }
         end
 
         limit_posts
         render "home"
     end
 
-    def pagination
-        render "home"
-    end
+    def search
+        puts params["search_text"]
+        puts "-> searching ..."
 
+        # x= Post.all.where("title like ?", "%#{params[:search_text]}%")
+        # puts x.inspect
+
+        x = Post.all.where("title like ?", "%#{params[:search_text]}%")
+
+        if x.length == 0
+            x = Post.all.where("url like ?", "%#{params[:search_text]}%")
+        end
+
+        if x.length == 0
+            redirect_to root_path, notice: "no posts matched #{params[:search_text]}"
+        else
+            $all_posts = x
+            limit_posts
+            render "home"
+        end
+    end
 
     def limit_posts
         amount_shown = 10
