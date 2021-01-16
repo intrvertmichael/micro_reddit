@@ -8,4 +8,11 @@
             <%= render 'posts/post', :post => post  %>
         </div>
     <% end %>
+
+    <div class='posts-nav'>
+        view more:
+        <%= link_to "« back", root_path(page: @page - 1 ) %>
+        <%= link_to "next »", root_path(page: @page + 1 ) %>
+    </div>
+
 </div>

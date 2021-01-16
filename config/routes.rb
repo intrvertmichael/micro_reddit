@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get "/posts/:id/sort" => 'posts#sort', :as => :sort_comment
 
+  get "/page" => 'static#pagination', :as => :pagination
+
   root to: "static#home"
 
 end

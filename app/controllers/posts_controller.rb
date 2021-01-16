@@ -67,7 +67,12 @@ class PostsController < ApplicationController
     end
 
     def sort
+        if session[:user_id]
+            @current_user = User.find(session[:user_id])
+        end
+
         @post = Post.find(params[:id])
+
         if params[:sort_type] == "new"
             @comments = @post.comments.sort{|a,b| b.updated_at <=> a.updated_at}
         elsif params[:sort_type] == "hot"

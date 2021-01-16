@@ -4,7 +4,11 @@
 
     <div class='nav'>
         <div class='nav-top'>
-        want to join? register in seconds
+        <% if !session[:user_id] %>
+            want to join? register in seconds
+        <% else %>
+            share your favorite links
+        <% end %>
         </div>
 
         <div class='nav-bottom'>

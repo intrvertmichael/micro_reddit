@@ -1,5 +1,5 @@
 <div class='sidebar'>
-    <% if @current_user %>
+    <% if session[:user_id] %>
         <%= render 'static/logged_in' %>
     <% else %>
         <%= render 'static/logged_out' %>
