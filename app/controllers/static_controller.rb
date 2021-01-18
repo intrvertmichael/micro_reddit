@@ -7,22 +7,10 @@ class StaticController < ApplicationController
             @current_user = User.find(session[:user_id])
         end
 
-        $all_posts ||= Post.all.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)}
-
-        limit_posts
-    end
-
-    def sort
-        if session[:user_id]
-            @current_user = User.find(session[:user_id])
-        end
-
-        if params[:sort_type] == "new"
-            $all_posts = Post.all.sort{|a,b| b.updated_at <=> a.updated_at}
-        elsif params[:sort_type] == "top"
-            $all_posts = Post.all.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)}
-        elsif params[:sort_type] == "hot"
-            $all_posts = Post.all.sort{ |a,b|
+        if $sort_type == "new"
+            all_posts = Post.all.sort{|a,b| b.updated_at <=> a.updated_at}
+        elsif $sort_type == "hot"
+            all_posts = Post.all.sort{ |a,b|
 
                 # a_sec = getSeconds(a.updated_at).to_i
                 a_votes = a.votes.sum(&:value).to_i
@@ -35,10 +23,20 @@ class StaticController < ApplicationController
 
                 # a_final <=>  b_final
             }
+        else
+            all_posts = Post.all.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)}
         end
 
-        limit_posts
-        render "home"
+        limit_posts(all_posts)
+    end
+
+    def sort
+        if session[:user_id]
+            @current_user = User.find(session[:user_id])
+        end
+
+        $sort_type = params[:sort_type]
+        redirect_to root_path
     end
 
     def getSeconds(date)
@@ -61,18 +59,17 @@ class StaticController < ApplicationController
         if all_results.length == 0
             redirect_to root_path, notice: "no posts matched #{params[:search_text]}"
         else
-            $all_posts = all_results
-            limit_posts
+            limit_posts(all_results)
             render "home"
         end
     end
 
-    def limit_posts
+    def limit_posts(all_posts)
 
         amount_shown = 10
 
         param_page = params[:page].to_i
-        @final_page = $all_posts.count / amount_shown
+        @final_page = all_posts.count / amount_shown
 
         if param_page < 1
             @page = 0
@@ -85,6 +82,6 @@ class StaticController < ApplicationController
         start_pos = @page * amount_shown
         end_pos = start_pos + amount_shown
 
-        @posts = $all_posts[start_pos...end_pos]
+        @posts = all_posts[start_pos...end_pos]
     end
 end

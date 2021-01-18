@@ -8,7 +8,6 @@ class PostsController < ApplicationController
         )
 
         if post.valid?
-            $all_posts = Post.all.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)}
             redirect_to root_path
         else
             @error_message = post.errors.full_messages
@@ -64,7 +63,7 @@ class PostsController < ApplicationController
 
     def belongs_to_user
         @post = Post.find(params[:id])
-        return (session[:user_id] == @post.user.id.to_s)
+        return (session[:user_id] == @post.user.id)
     end
 
     def sort
