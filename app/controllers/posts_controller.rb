@@ -8,6 +8,7 @@ class PostsController < ApplicationController
         )
 
         if post.valid?
+            $all_posts = Post.all.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)}
             redirect_to root_path
         else
             @error_message = post.errors.full_messages

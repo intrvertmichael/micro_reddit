@@ -15,12 +15,10 @@ ActiveRecord::Schema.define(version: 2021_01_13_005319) do
   create_table "comment_votes", force: :cascade do |t|
     t.integer "value"
     t.integer "user_id", null: false
-    t.integer "post_id", null: false
     t.integer "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_comment_votes_on_comment_id"
-    t.index ["post_id"], name: "index_comment_votes_on_post_id"
     t.index ["user_id"], name: "index_comment_votes_on_user_id"
   end
 
@@ -61,7 +59,6 @@ ActiveRecord::Schema.define(version: 2021_01_13_005319) do
   end
 
   add_foreign_key "comment_votes", "comments"
-  add_foreign_key "comment_votes", "posts"
   add_foreign_key "comment_votes", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"

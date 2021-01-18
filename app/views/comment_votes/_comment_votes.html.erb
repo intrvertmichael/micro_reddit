@@ -1,15 +1,13 @@
 
 <div class='comment-votes'>
 
-    <% v = CommentVote.find_by(comment_id: comment.id, post_id: comment.post.id, user_id: session[:user_id]) %>
+    <% v = CommentVote.find_by(comment_id: comment.id, user_id: session[:user_id]) %>
 
     <% upvote_value = v ? v.value : ""  %>
 
     <% if upvote_value == 1 %>
         <%= link_to image_tag("arrow_orange.png"),
             comment_vote_path(
-                comment,
-                :id => comment.post.id,
                 :comment_id => comment.id,
                 :change => "up"
             ), method: :put, :class => "comment-upvote"
@@ -17,8 +15,6 @@
     <% else %>
         <%= link_to image_tag("arrow.png"),
             comment_vote_path(
-                comment,
-                :id => comment.post.id,
                 :comment_id => comment.id,
                 :change => "up"
             ), method: :put, :class => "comment-upvote"
@@ -28,8 +24,6 @@
     <% if upvote_value == -1 %>
         <%= link_to image_tag("arrow_orange.png"),
             comment_vote_path(
-            comment,
-            :id => comment.post.id,
             :comment_id => comment.id,
             :change => "down"
             ), method: :put, :class => "comment-downvote"
@@ -37,8 +31,6 @@
     <% else %>
         <%= link_to image_tag("arrow.png"),
             comment_vote_path(
-            comment,
-            :id => comment.post.id,
             :comment_id => comment.id,
             :change => "down"
             ), method: :put, :class => "comment-downvote"

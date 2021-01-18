@@ -19,11 +19,21 @@ class StaticController < ApplicationController
 
         if params[:sort_type] == "new"
             $all_posts = Post.all.sort{|a,b| b.updated_at <=> a.updated_at}
-        elsif params[:sort_type] == "hot"
-            $all_posts = Post.all.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)}
         elsif params[:sort_type] == "top"
+            $all_posts = Post.all.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)}
+        elsif params[:sort_type] == "hot"
             $all_posts = Post.all.sort{ |a,b|
-                b.votes.sum(&:value) <=> a.votes.sum(&:value)
+
+                # a_sec = getSeconds(a.updated_at).to_i
+                a_votes = a.votes.sum(&:value).to_i
+
+                # b_sec = getSeconds(b.updated_at).to_i
+                b_votes = b.votes.sum(&:value).to_i
+
+                # a_final = a_votes / a_sec
+                # b_final = b_votes / b_sec
+
+                # a_final <=>  b_final
             }
         end
 
@@ -31,29 +41,34 @@ class StaticController < ApplicationController
         render "home"
     end
 
+    def getSeconds(date)
+        # year = date.strftime("%Y") * 946080000
+        month = date.strftime("%m") * 2592000
+        day = date.strftime("%d") * 86400
+        hour = date.strftime("%H") * 3600
+        mins = date.strftime("%M") * 60
+        seconds = date.strftime("%S")
+
+        # return month + day + hour + mins + seconds
+    end
+
     def search
-        puts params["search_text"]
-        puts "-> searching ..."
+        title_results = Post.all.where("title like ?", "%#{params[:search_text]}%")
+        url_results = Post.all.where("url like ?", "%#{params[:search_text]}%")
 
-        # x= Post.all.where("title like ?", "%#{params[:search_text]}%")
-        # puts x.inspect
+        all_results = title_results + url_results
 
-        x = Post.all.where("title like ?", "%#{params[:search_text]}%")
-
-        if x.length == 0
-            x = Post.all.where("url like ?", "%#{params[:search_text]}%")
-        end
-
-        if x.length == 0
+        if all_results.length == 0
             redirect_to root_path, notice: "no posts matched #{params[:search_text]}"
         else
-            $all_posts = x
+            $all_posts = all_results
             limit_posts
             render "home"
         end
     end
 
     def limit_posts
+
         amount_shown = 10
 
         param_page = params[:page].to_i
