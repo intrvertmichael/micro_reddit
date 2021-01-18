@@ -21,11 +21,14 @@ class CommentsController < ApplicationController
 
     def update
         @comment = Comment.find(params[:id])
-        @comment.update(
-            post_id: params[:comment]["post_id"],
-            user_id: session[:user_id],
-            body: params[:comment]["body"]
-        )
+
+        if belongs_to_user
+            @comment.update(
+                post_id: params[:comment]["post_id"],
+                user_id: session[:user_id],
+                body: params[:comment]["body"]
+            )
+        end
 
         @post = Post.find(params[:comment][:post_id].to_i)
         redirect_to @post
@@ -33,16 +36,18 @@ class CommentsController < ApplicationController
 
     def destroy
         @comment = Comment.find(params[:comment_id])
+        post_id = @comment.post_id
 
         if belongs_to_user
             @comment.destroy
         end
 
-        @post = Post.find(@comment.post_id)
+        @post = Post.find(post_id)
         redirect_to @post
     end
 
     def belongs_to_user
-        return (session[:user_id] == @comment.user_id.to_s)
+        x = session[:user_id] == @comment.user_id
+        return x
     end
 end
