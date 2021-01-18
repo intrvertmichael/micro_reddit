@@ -12,16 +12,16 @@ class StaticController < ApplicationController
         elsif $sort_type == "hot"
             all_posts = Post.all.sort{ |a,b|
 
-                # a_sec = getSeconds(a.updated_at).to_i
+                a_sec = Time.now - a.updated_at
                 a_votes = a.votes.sum(&:value).to_i
 
-                # b_sec = getSeconds(b.updated_at).to_i
+                b_sec = Time.now - b.updated_at
                 b_votes = b.votes.sum(&:value).to_i
 
-                # a_final = a_votes / a_sec
-                # b_final = b_votes / b_sec
+                a_final = a_votes / a_sec
+                b_final = b_votes / b_sec
 
-                # a_final <=>  b_final
+                b_final <=>  a_final
             }
         else
             all_posts = Post.all.sort{|a,b| b.votes.sum(&:value) <=> a.votes.sum(&:value)}
@@ -37,17 +37,6 @@ class StaticController < ApplicationController
 
         $sort_type = params[:sort_type]
         redirect_to root_path
-    end
-
-    def getSeconds(date)
-        # year = date.strftime("%Y") * 946080000
-        month = date.strftime("%m") * 2592000
-        day = date.strftime("%d") * 86400
-        hour = date.strftime("%H") * 3600
-        mins = date.strftime("%M") * 60
-        seconds = date.strftime("%S")
-
-        # return month + day + hour + mins + seconds
     end
 
     def search

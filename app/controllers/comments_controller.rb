@@ -47,7 +47,6 @@ class CommentsController < ApplicationController
     end
 
     def belongs_to_user
-        x = session[:user_id] == @comment.user_id
-        return x
+        session[:user_id] == @comment.user_id
     end
 end

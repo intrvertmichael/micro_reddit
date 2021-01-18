@@ -13,10 +13,22 @@
 
         <div class='nav-bottom'>
             <div class="sort-links">
-                <%= link_to "top", sort_path(sort_type:"top") %>
-                <%= link_to "new", sort_path(sort_type:"new") %>
-                <%= link_to "hot", sort_path(sort_type:"hot") %>
+
+                <% if $sort_type == "new" %>
+                    <%= link_to "top", sort_path(sort_type:"top") %>
+                    <%= link_to "new", sort_path(sort_type:"new"), class: "active" %>
+                    <%= link_to "hot", sort_path(sort_type:"hot") %>
+                <% elsif $sort_type == "hot" %>
+                    <%= link_to "top", sort_path(sort_type:"top") %>
+                    <%= link_to "new", sort_path(sort_type:"new") %>
+                    <%= link_to "hot", sort_path(sort_type:"hot"), class: "active" %>
+                <% else %>
+                    <%= link_to "top", sort_path(sort_type:"top"), class: "active" %>
+                    <%= link_to "new", sort_path(sort_type:"new") %>
+                    <%= link_to "hot", sort_path(sort_type:"hot") %>
+                <% end %>
             </div>
+
             <div class='search'>
                 <%= form_with url: search_url do |form| %>
                     <%= form.text_field :search_text, required: true  %>

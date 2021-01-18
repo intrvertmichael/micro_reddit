@@ -93,7 +93,14 @@ a:visited {
                         background: #336699;
                         color: white;
                     }
+
                 }
+
+                .active {
+                    background: #336699;
+                    color: white !important;
+                }
+
             }
 
             .search {
