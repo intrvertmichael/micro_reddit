@@ -32,6 +32,10 @@
     .bottom-line {
         color: gray;
         font-size: x-small;
+
+        .points {
+            display: inline-block;
+        }
     }
 
     .comments {

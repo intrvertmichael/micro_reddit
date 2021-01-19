@@ -1,6 +1,7 @@
 <div class='comment'>
 
-    <%= render 'comment_votes/comment_votes', :comment => comment %>
+    <%= render 'comment_votes/ajax_comment_votes', :comment => comment %>
+    <%# render 'comment_votes/comment_votes', :comment => comment %>
 
     <div class='comment-content'>
         <div class='comment-content-top'>
@@ -8,7 +9,9 @@
                 <%= link_to comment.user.username.capitalize, user_path(:author_id => comment.user.id).to_s %>
             </strong>
 
+            <div class='points'>
             <%= comment.points %> points
+            </div>
             <%= time_ago_in_words(comment.created_at) %> ago
         </div>
 

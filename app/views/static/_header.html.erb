@@ -5,7 +5,13 @@
     <div class='nav'>
         <div class='nav-top'>
         <% if !session[:user_id] %>
-            want to join? register in seconds
+            <label class='register-label'>
+                want to join? <a href="#" class="register-btn">register</a> in seconds
+            </label>
+
+            <label class='login-label hidden'>
+                already have an account? <a href="#" class="register-btn">login</a> in seconds
+            </label>
         <% else %>
             share your favorite links
         <% end %>

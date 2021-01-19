@@ -1,0 +1,27 @@
+
+<div class='comment-votes'>
+
+    <% v = CommentVote.find_by(comment_id: comment.id, user_id: session[:user_id]) %>
+
+    <% upvote_value = v ? v.value : ""  %>
+
+    <% if upvote_value == 1 %>
+        <div class='comment-upvote' data-comment=<%= comment.id %> >
+            <%= image_tag("arrow_orange.png") %>
+        </div>
+    <% else %>
+        <div class='comment-upvote' data-comment=<%= comment.id %> >
+            <%= image_tag("arrow.png") %>
+        </div>
+    <% end %>
+
+    <% if upvote_value == -1 %>
+        <div class='comment-downvote' data-comment=<%= comment.id %> >
+            <%= image_tag("arrow_orange.png") %>
+        </div>
+    <% else %>
+        <div class='comment-downvote' data-comment=<%= comment.id %> >
+            <%= image_tag("arrow.png") %>
+        </div>
+    <% end %>
+</div>

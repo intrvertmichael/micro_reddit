@@ -24,11 +24,15 @@
 }
 
 .comment {
-    padding: 5px;
+    padding: 100px 5px;
     box-sizing: border-box;
 
     display: flex;
     flex-direction: row;
+
+    .points {
+        display: inline-block;
+    }
 
     .comment-content {
         .comment-content-top {

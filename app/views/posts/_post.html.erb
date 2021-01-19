@@ -1,33 +1,33 @@
 
-<%= render 'votes/votes', :post => post  %>
+<%= render 'votes/ajax_votes', :post => post  %>
+<%# render 'votes/votes', :post => post  %>
 
-<div class='post'>
+<div class='post' data-post=<%= post.id %>>
 
     <div class='top-line'>
         <a href="<%= post.url %>" target=”_blank”>
             <%= post.title %>
         </a>
-
         (<%= URI.parse(post.url).host %>)
     </div>
 
     <div class='bottom-line'>
-        <% if post.points == 1 || post.points == -1 %>
-            <%= post.points %> point
-        <% else %>
-            <%= post.points %> points
-        <% end %>
+        <div class='points'>
+            <% if post.points == 1 || post.points == -1 %>
+                <%= post.points %> point
+            <% else %>
+                <%= post.points %> points
+            <% end %>
+        </div>
 
         posted
         <%= time_ago_in_words(post.created_at) %>
         ago by
-
         <% name = post.user.username.capitalize %>
-
         <%= link_to name, user_path(post, :author_id => post.user.id) %>
 
         <% c_label = post.comments.count.to_s + " Comments"  %>
-
         <%= link_to c_label, post, :class => "comments" %>
     </div>
+
 </div>
