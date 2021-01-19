@@ -27,9 +27,6 @@ class CommentVotesController < ApplicationController
     def set_comment_vote(cid, uid, change)
         @comment_vote = CommentVote.find_by(user_id: uid, comment_id: cid)
 
-        puts "->"
-        puts @comment_vote
-
         if @comment_vote
             if @comment_vote.value == change
                 @comment_vote.value = 0
