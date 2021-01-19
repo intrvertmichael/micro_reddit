@@ -18,7 +18,9 @@
         </div>
 
         <% @comments.each do |comment| %>
-            <%= render 'comments/comment', :comment => comment  %>
+            <% if !comment.parent_id %>
+                <%= render 'comments/comment', :comment => comment  %>
+            <% end %>
         <% end %>
     <% end %>
 

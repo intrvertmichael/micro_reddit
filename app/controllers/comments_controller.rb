@@ -3,7 +3,11 @@ class CommentsController < ApplicationController
         @post = Post.find(params["post_id"])
 
         if session[:user_id]
-            comment = Comment.create(post_id: params["post_id"], user_id: session[:user_id], body: params["body"])
+            comment = Comment.create(
+                post_id: params["post_id"],
+                user_id: session[:user_id],
+                body: params["body"]
+            )
 
             if comment.valid?
                 redirect_to @post

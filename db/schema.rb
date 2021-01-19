@@ -24,10 +24,12 @@ ActiveRecord::Schema.define(version: 2021_01_13_005319) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
+    t.integer "parent_id"
     t.integer "post_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end

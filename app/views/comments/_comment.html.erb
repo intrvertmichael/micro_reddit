@@ -1,33 +1,42 @@
 <div class='comment'>
+    <div class='comment-wrapper'>
+        <%= render 'comment_votes/ajax_comment_votes', :comment => comment %>
+        <%# render 'comment_votes/comment_votes', :comment => comment %>
 
-    <%= render 'comment_votes/ajax_comment_votes', :comment => comment %>
-    <%# render 'comment_votes/comment_votes', :comment => comment %>
+        <div class='comment-content'>
+            <div class='comment-content-top'>
+                <strong>
+                    <%= link_to comment.user.username.capitalize, user_path(:author_id => comment.user.id).to_s %>
+                </strong>
 
-    <div class='comment-content'>
-        <div class='comment-content-top'>
-            <strong>
-                <%= link_to comment.user.username.capitalize, user_path(:author_id => comment.user.id).to_s %>
-            </strong>
-
-            <div class='points'>
-            <%= comment.points %> points
+                <div class='points'>
+                <%= comment.points %> points
+                </div>
+                <%= time_ago_in_words(comment.created_at) %> ago
             </div>
-            <%= time_ago_in_words(comment.created_at) %> ago
-        </div>
 
-        <p>
-            <%= comment.body %> <br>
-        </p>
+            <p>
+                <%= comment.body %> <br>
+            </p>
 
-        <div class='comment-content-links'>
-            <% if session[:user_id] == comment.user_id%>
-                <%= link_to "Edit", edit_comment_path(:comment_id => comment.id) %>
+            <div class='comment-content-links'>
+                <% if session[:user_id] == comment.user_id%>
+                    <%= link_to "Edit", edit_comment_path(:comment_id => comment.id) %>
 
-                <%= link_to "Destroy", comment_path(:comment_id => comment.id),
-                        method: :delete,
-                        data: { confirm: "Are you sure?" }
-                %>
-            <% end %>
+                    <%= link_to "Destroy", comment_path(:comment_id => comment.id),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" }
+                    %>
+                <% end %>
+            </div>
         </div>
     </div>
+
+    <% comment.comment.each do |commentreply| %>
+        <div class='reply'>
+            <% if comment.id == commentreply.parent_id %>
+                <%= render 'comments/comment', :comment => commentreply %>
+            <% end %>
+        </div>
+    <% end %>
 </div>
