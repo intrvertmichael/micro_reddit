@@ -55,7 +55,7 @@ class StaticController < ApplicationController
 
     def limit_posts(all_posts)
 
-        amount_shown = 10
+        amount_shown = 5
 
         param_page = params[:page].to_i
         @final_page = all_posts.count / amount_shown
@@ -72,5 +72,6 @@ class StaticController < ApplicationController
         end_pos = start_pos + amount_shown
 
         @posts = all_posts[start_pos...end_pos]
+        @shifter = 1 + params[:page].to_i * amount_shown
     end
 end

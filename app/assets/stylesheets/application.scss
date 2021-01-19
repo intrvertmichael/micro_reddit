@@ -80,6 +80,8 @@ a:visited {
             justify-content: space-between;
 
             .sort-links {
+                display: flex;
+
                 a {
                     width: fit-content;
                     padding: 2px 5px;
