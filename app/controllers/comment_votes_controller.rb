@@ -21,6 +21,8 @@ class CommentVotesController < ApplicationController
             comment = Comment.find(cid)
 
             render json: { vote: @comment_vote, points: comment.points }
+        else
+            render json: { error: "Log In or Register to Vote on a Comment" }
         end
     end
 

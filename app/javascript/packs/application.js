@@ -17,7 +17,7 @@ ActiveStorage.start()
 const ready = () => {
     console.log( "ready!" )
 
-    $( ".register-btn" ).on( "click" , toggleRegisterLogIn)
+    $( ".register-btn" ).on( "click" , e => toggleRegisterLogIn(e))
 
     $('.upvote').on("click", e => ajaxVote(e, 'up'))
     $('.downvote').on("click", e => ajaxVote(e, 'down'))
@@ -26,7 +26,8 @@ const ready = () => {
     $('.comment-downvote').on("click", e => ajaxCommentVote(e, 'down'))
 }
 
-const toggleRegisterLogIn = () =>{
+const toggleRegisterLogIn = e =>{
+    e.preventDefault()
     $( ".register-form" ).toggleClass("hidden")
     $( ".login-form" ).toggleClass("hidden")
     $( ".login-label" ).toggleClass("hidden")
@@ -40,9 +41,7 @@ const ajaxVote = (e, value) => {
     $.ajax({
         url: `/ajax/vote/${postId}/${value}`,
         success: result => {
-
-            if(result){
-
+            if(result.vote){
                 const value = result.vote.value
                 const points = result.points
 
@@ -65,7 +64,10 @@ const ajaxVote = (e, value) => {
                 } else {
                     $(e.currentTarget).closest('.list-post').find('.points').html(`${points} points`)
                 }
-
+            }
+            else {
+                console.log(result.error)
+                $(".error").html(`<p> ${result.error} </p>`);
             }
 
         }
@@ -80,8 +82,7 @@ const ajaxCommentVote = (e, value) => {
     $.ajax({
         url: `/ajax/comment_vote/${commentId}/${value}`,
         success: result => {
-            if(result){
-
+            if(result.vote){
                 const value = result.vote.value
                 const points = result.points
 
@@ -104,7 +105,10 @@ const ajaxCommentVote = (e, value) => {
                 } else {
                     $(e.currentTarget).closest('.comment').find('.points').html(`${points} points`)
                 }
-
+            }
+            else {
+                console.log(result.error)
+                $(".error").html(`<p> ${result.error} </p>`);
             }
 
         }
@@ -113,5 +117,5 @@ const ajaxCommentVote = (e, value) => {
 
 
 
-$(window).on("load", ready)
+// $(window).on("load", ready)
 $(window).on("turbolinks:load", ready)

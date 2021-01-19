@@ -15,12 +15,15 @@ class VotesController < ApplicationController
         uid = session[:user_id]
         change = params[:value] == "up"? 1 : -1
 
+        puts "- - - - - - - - - - - - - - - -"
         puts uid
 
         if uid
             set_vote(pid, uid, change)
             post = Post.find(pid)
             render json: {vote: @vote, points: post.points }
+        else
+            render json: { error: "Log In or Register to Vote on a Post" }
         end
     end
 

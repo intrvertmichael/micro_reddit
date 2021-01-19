@@ -6,15 +6,20 @@
 
     <% if session[:user_id]%>
         <%= render 'comments/form', :post => @post %>
+    <% else %>
+        <p> Log In or Register to leave a comment </p>
     <% end %>
 
-    <div class='comment-sort'>
-        <%= link_to "hot", sort_comment_path(sort_type:"hot") %>
-        <%= link_to "new", sort_comment_path(sort_type:"new") %>
-    </div>
 
-    <% @comments.each do |comment| %>
-        <%= render 'comments/comment', :comment => comment  %>
+    <% if @comments.count > 0 %>
+        <div class='comment-sort'>
+            <%= link_to "hot", sort_comment_path(sort_type:"hot") %>
+            <%= link_to "new", sort_comment_path(sort_type:"new") %>
+        </div>
+
+        <% @comments.each do |comment| %>
+            <%= render 'comments/comment', :comment => comment  %>
+        <% end %>
     <% end %>
 
 </div>
