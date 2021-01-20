@@ -8,7 +8,7 @@ class PostsController < ApplicationController
         )
 
         if post.valid?
-            redirect_to root_path
+            redirect_to post
         else
             @error_message = post.errors.full_messages
             redirect_to root_path, notice: @error_message
