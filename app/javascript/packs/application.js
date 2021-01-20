@@ -52,7 +52,7 @@ const toggleRegisterLogIn = e =>{
 }
 
 const ajaxVote = (e, value) => {
-    // e.preventDefault()
+    e.preventDefault()
     const postId = $(e.currentTarget).attr('data-post')
 
     $.ajax({
@@ -93,7 +93,7 @@ const ajaxVote = (e, value) => {
 
 
 const ajaxCommentVote = (e, value) => {
-    // e.preventDefault()
+    e.preventDefault()
     const commentId = $(e.currentTarget).attr('data-comment')
 
     $.ajax({
