@@ -2,7 +2,7 @@
 ![Old Reddit Logo](https://variety.com/wp-content/uploads/2014/10/reddit-logo.jpg?w=946)
 
 # MicroReddit
-Micro reddit is a remake of the old and beloved version of reddit when it first started. A simple style and ranking of links found on the internet.
+Micro reddit is a remake of the old and beloved version of reddit when it first started. A simple styled ranking of links found on the internet.
 
 ## Features
 
