@@ -15,9 +15,6 @@ class VotesController < ApplicationController
         uid = session[:user_id]
         change = params[:value] == "up"? 1 : -1
 
-        puts "- - - - - - - - - - - - - - - -"
-        puts uid
-
         if uid
             set_vote(pid, uid, change)
             post = Post.find(pid)

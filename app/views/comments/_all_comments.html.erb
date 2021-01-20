@@ -12,10 +12,13 @@
 
 
     <% if @comments.count > 0 %>
-        <div class='comment-sort'>
-            <%= link_to "top", sort_comment_path(sort_type:"top") %>
-            <%= link_to "new", sort_comment_path(sort_type:"new") %>
-        </div>
+
+        <% if @comments.count > 2 %>
+            <div class='comment-sort'>
+                <%= link_to "top", sort_comment_path(sort_type:"top") %>
+                <%= link_to "new", sort_comment_path(sort_type:"new") %>
+            </div>
+        <% end %>
 
         <% @comments.each do |comment| %>
             <% if !comment.parent_id %>

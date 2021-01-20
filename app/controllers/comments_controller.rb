@@ -18,11 +18,6 @@ class CommentsController < ApplicationController
         end
     end
 
-    def edit
-        @comment = Comment.find(params[:comment_id])
-        @post = Post.find(@comment.post_id)
-    end
-
     def update
         @comment = Comment.find(params[:id])
 
@@ -54,8 +49,6 @@ class CommentsController < ApplicationController
     end
 
     def delete_children(comment)
-        puts "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-        puts comment.id
 
         if comment.comment && comment.comment.count > 0
             comment.comment.each do |commentreply|

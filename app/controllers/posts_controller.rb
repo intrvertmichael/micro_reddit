@@ -25,14 +25,6 @@ class PostsController < ApplicationController
         end
     end
 
-    def edit
-        if belongs_to_user
-            @post = Post.find(params[:id])
-        else
-            redirect_to root_path
-        end
-    end
-
     def update
         if belongs_to_user
             @post = Post.find(params[:id])

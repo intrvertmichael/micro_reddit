@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 
-  root to: "static#home"
-
   # register and login
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :comment_votes, only: [:update, :ajax_update, :destroy]
 
+
   # custom feature routes
   post :search, to: "static#search"
   get :sort, to: "static#sort"
@@ -30,5 +29,9 @@ Rails.application.routes.draw do
   get '/ajax/comment_vote/:comment_id/:value', to: 'comment_votes#ajax_update'
 
   get '/comment_reply', to: 'comments#reply'
+
+
+  # root
+  root to: "static#home"
 
 end

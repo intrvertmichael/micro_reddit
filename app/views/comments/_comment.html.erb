@@ -30,7 +30,9 @@
 
                 <% end %>
 
-                <a href="#" class='comment-reply'> Reply </a>
+                <% if session[:user_id] %>
+                    <a href="#" class='comment-reply'> Reply </a>
+                <% end %>
             </div>
         </div>
     </div>
