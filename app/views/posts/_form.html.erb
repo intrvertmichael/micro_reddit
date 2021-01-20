@@ -1,7 +1,7 @@
 
 <div class="post-form">
 
-<% if @post && session[:user_id] && @post.user_id == session[:user_id].to_i %>
+<% if @post && @post.user_id == session[:user_id].to_i %>
 
     <h3> Edit Post </h3>
 
@@ -13,7 +13,7 @@
         <%= form.label :url %>
         <%= form.text_field :url, required: true, value:@post.url %>
 
-        <%= form.submit %>
+        <%= form.submit "Edit Post" %>
 
     <% end %>
 

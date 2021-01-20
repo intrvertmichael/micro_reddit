@@ -1,30 +1,30 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+
+  root to: "static#home"
+
+  # register and login
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
-
-  resources :users
-  resources :posts
-  resources :votes
-  resources :comments
-  resources :comment_votes
-
-  post :search, to: "static#search"
-
-  get :sort, to: "static#sort"
 
   delete :logout, to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"
 
 
+  # features
+  resources :users, only: [:show]
+  resources :posts, only: [:create, :edit, :update, :destroy]
+  resources :votes, only: [:update, :edit, :ajax_update]
+  resources :comments, only: [:create, :edit, :update, :destroy]
+  resources :comment_votes, only: [:update, :ajax_update]
+
+  # custom feature routes
+  post :search, to: "static#search"
+  get :sort, to: "static#sort"
+
   get "/posts/:id", to: "posts#show"
-  put :edit_post, to: "posts#update"
-
   get "/posts/:id/sort" => 'posts#sort', :as => :sort_comment
-
-  root to: "static#home"
-
-
 
   get '/ajax/vote/:post_id/:value', to: 'votes#ajax_update'
   get '/ajax/comment_vote/:comment_id/:value', to: 'comment_votes#ajax_update'
