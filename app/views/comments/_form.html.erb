@@ -12,10 +12,9 @@
     <%= form_with url: comments_url do |form| %>
         <div class="comment-form">
             <%= form.hidden_field :post_id, :value => @post.id %>
-            <%= form.label :body %> <br>
             <%= form.text_area :body, placeholder: "What are your thoughts ?", required: true %>
 
-            <%= form.submit %>
+            <%= form.submit "Add Comment"%>
         </div>
     <% end %>
 <% end %>
