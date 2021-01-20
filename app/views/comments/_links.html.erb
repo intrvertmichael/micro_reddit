@@ -1,0 +1,15 @@
+<div class='comment-content-links'>
+    <% if session[:user_id] == comment.user_id%>
+        <a href="#" class='comment-edit'> Edit </a>
+
+        <%= link_to "Destroy", comment_path(:comment_id => comment.id),
+                method: :delete,
+                data: { confirm: "Are you sure?" }
+        %>
+
+    <% end %>
+
+    <% if session[:user_id] %>
+        <a href="#" class='comment-reply'> Reply </a>
+    <% end %>
+</div>

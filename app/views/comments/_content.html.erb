@@ -1,0 +1,14 @@
+<div class='comment-content-top'>
+    <strong>
+        <%= link_to comment.user.username.capitalize, user_path(:author_id => comment.user.id).to_s %>
+    </strong>
+
+    <div class='points'>
+    <%= comment.points %> points
+    </div>
+    <%= time_ago_in_words(comment.created_at) %> ago
+</div>
+
+<p>
+    <%= comment.body %> <br>
+</p>

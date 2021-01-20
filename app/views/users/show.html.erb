@@ -9,12 +9,14 @@
             <div class='profile-top'>
                 <h3> <%= @author.username %> </h3>
             </div>
+
             member since: <%= @author.created_at.strftime("%B %d, %Y") %> <br>
             post points: <%= @karma %> <br>
 
             <div class='stats'>
                 stats
             </div>
+
             total posts: <%= @author.post_amount %> <br>
             total comments: <%= @author.comment_amount %> <br>
         </div>

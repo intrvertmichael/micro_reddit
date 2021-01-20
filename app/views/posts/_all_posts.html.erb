@@ -1,16 +1,12 @@
 <div class='posts'>
     <% @posts.each_with_index do |post, index| %>
         <div class='list-post'>
-            <div class='index'>
-                <%= index + @shifter %>.
-            </div>
-
-            <%= render 'posts/post', :post => post  %>
+            <div class='index'> <%= index + @shifter %>. </div>
+            <%= render 'posts/post', :post => post, :index => index, :@shifter => @shifter  %>
         </div>
     <% end %>
 
     <div class='posts-nav'>
-
         <% if @page > 0 || @page < @final_page%>
             view more:
         <% end %>
