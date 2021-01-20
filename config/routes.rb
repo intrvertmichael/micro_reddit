@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   # features
   resources :users, only: [:show]
   resources :posts, only: [:create, :edit, :update, :destroy]
-  resources :votes, only: [:update, :edit, :ajax_update]
+  resources :votes, only: [:update, :edit, :ajax_update, :destroy]
   resources :comments, only: [:create, :edit, :update, :destroy]
-  resources :comment_votes, only: [:update, :ajax_update]
+  resources :comment_votes, only: [:update, :ajax_update, :destroy]
 
   # custom feature routes
   post :search, to: "static#search"

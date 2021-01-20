@@ -43,11 +43,29 @@ class CommentsController < ApplicationController
         post_id = @comment.post_id
 
         if belongs_to_user
+            delete_children(@comment)
+
+            CommentVote.where(comment_id: @comment.id).delete_all
             @comment.destroy
         end
 
         @post = Post.find(post_id)
         redirect_to @post
+    end
+
+    def delete_children(comment)
+        puts "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+        puts comment.id
+
+        if comment.comment && comment.comment.count > 0
+            comment.comment.each do |commentreply|
+                commentInstance = Comment.find(commentreply.id)
+                delete_children(commentInstance)
+            end
+        end
+
+        CommentVote.where(comment_id: comment.id).delete_all
+        Comment.where(id: comment.id).delete_all
     end
 
     def reply
