@@ -50,6 +50,26 @@ class CommentsController < ApplicationController
         redirect_to @post
     end
 
+    def reply
+        @post = Post.find(params["post_id"])
+
+        if session[:user_id]
+            comment = Comment.create(
+                post_id: params["post_id"],
+                parent_id: params["parent_id"],
+                user_id: session[:user_id],
+                body: params["body"]
+            )
+
+            if comment.valid?
+                redirect_to @post
+            else
+                @error_message = comment.errors.full_messages
+                redirect_to @post, notice: @error_message
+            end
+        end
+    end
+
     def belongs_to_user
         session[:user_id] == @comment.user_id
     end

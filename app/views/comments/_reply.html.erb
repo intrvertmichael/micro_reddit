@@ -1,0 +1,10 @@
+
+<%= form_with url:comment_reply_url, method: :get do |form| %>
+    <div class="comment-reply-form hidden">
+        <%= form.hidden_field :post_id, :value => @post.id %>
+        <%= form.hidden_field :parent_id, :value => @comment.id %>
+        <%= form.text_area :body, placeholder: "How would you like to respond ?", required: true  %>
+
+        <%= form.submit "Reply" %>
+    </div>
+<% end %>

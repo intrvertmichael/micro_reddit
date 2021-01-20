@@ -1,34 +1,21 @@
-<div class="comment-form">
-
-<%= @error_message %>
 
 <% if @comment %>
     <%= form_for @comment do |form| %>
-        <div class="comment-form">
-            <div>
-                <%= form.hidden_field :post_id, :value => @post.id %>
-                <%= form.label :body %> <br>
-                <%= form.text_area :body, placeholder: "What are your thoughts ?", required: true, :value => @comment.body  %>
-            </div>
+        <div class="comment-edit-form hidden">
+            <%= form.hidden_field :post_id, :value => @post.id %>
+            <%= form.text_area :body, placeholder: "What are your thoughts ?", required: true, :value => @comment.body  %>
 
-            <div>
-            <%= form.submit %>
-            </div>
+            <%= form.submit "Edit" %>
         </div>
     <% end %>
 <% else %>
     <%= form_with url: comments_url do |form| %>
         <div class="comment-form">
-            <div>
-                <%= form.hidden_field :post_id, :value => @post.id %>
-                <%= form.label :body %> <br>
-                <%= form.text_area :body, placeholder: "What are your thoughts ?", required: true %>
-            </div>
+            <%= form.hidden_field :post_id, :value => @post.id %>
+            <%= form.label :body %> <br>
+            <%= form.text_area :body, placeholder: "What are your thoughts ?", required: true %>
 
-            <div>
             <%= form.submit %>
-            </div>
         </div>
     <% end %>
 <% end %>
-</div>

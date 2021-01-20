@@ -13,7 +13,7 @@
     }
 
     form {
-        padding-bottom: 20px;
+        // padding-bottom: 20px;
 
         textarea {
             width: 100%;
@@ -34,9 +34,20 @@
     box-sizing: border-box;
 }
 
-.comment-form {
+.comment-form, .comment-edit-form, .comment-reply-form {
     padding: 10px 5px;
     box-sizing: border-box;
+
+    textarea {
+        display: block;
+        resize: none;
+    }
+
+    input[type=submit] {
+        margin-top: 10px;
+        border: 1px solid #336699;
+        background: #e9e9e9;
+    }
 }
 
 .comment-sort {
@@ -106,4 +117,9 @@
             transform: rotate(90deg);
         }
     }
+}
+
+.comment-edit-form, .comment-reply-form {
+    padding: 10px 50px;
+    box-sizing: border-box;
 }

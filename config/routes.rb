@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   get '/ajax/vote/:post_id/:value', to: 'votes#ajax_update'
   get '/ajax/comment_vote/:comment_id/:value', to: 'comment_votes#ajax_update'
 
+  get '/comment_reply', to: 'comments#reply'
+
 end

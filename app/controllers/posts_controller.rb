@@ -75,7 +75,7 @@ class PostsController < ApplicationController
 
         if params[:sort_type] == "new"
             @comments = @post.comments.sort{|a,b| b.updated_at <=> a.updated_at}
-        elsif params[:sort_type] == "hot"
+        elsif params[:sort_type] == "top"
             @comments = @post.comments.sort{|a,b| b.comment_votes.sum(&:value) <=> a.comment_votes.sum(&:value)}
         end
         render "show"

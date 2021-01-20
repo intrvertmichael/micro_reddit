@@ -24,6 +24,23 @@ const ready = () => {
 
     $('.comment-upvote').on("click", e => ajaxCommentVote(e, 'up'))
     $('.comment-downvote').on("click", e => ajaxCommentVote(e, 'down'))
+
+    $('.comment-edit').on("click", editFormReveal)
+    $('.comment-reply').on("click", commentReply)
+}
+
+const commentReply = e => {
+    e.preventDefault()
+
+    $(e.currentTarget).closest('.comment').find(".comment-reply-form:first").toggleClass('hidden')
+    $(e.currentTarget).closest('.comment').find(".comment-edit-form:first").addClass('hidden')
+}
+
+const editFormReveal = e => {
+    e.preventDefault()
+
+    $(e.currentTarget).closest('.comment').find(".comment-edit-form:first").toggleClass('hidden')
+    $(e.currentTarget).closest('.comment').find(".comment-reply-form:first").addClass('hidden')
 }
 
 const toggleRegisterLogIn = e =>{
@@ -114,7 +131,6 @@ const ajaxCommentVote = (e, value) => {
         }
     })
 }
-
 
 
 // $(window).on("load", ready)
