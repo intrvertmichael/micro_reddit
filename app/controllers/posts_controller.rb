@@ -4,7 +4,7 @@ class PostsController < ApplicationController
         post = Post.create(
             user_id: session[:user_id],
             title: params["title"],
-            url: params["url"]
+            url: params["url"].downcase
         )
 
         if post.valid?

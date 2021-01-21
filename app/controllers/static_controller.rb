@@ -40,8 +40,8 @@ class StaticController < ApplicationController
     end
 
     def search
-        title_results = Post.all.where("title like ?", "%#{params[:search_text]}%")
-        url_results = Post.all.where("url like ?", "%#{params[:search_text]}%")
+        title_results = Post.all.where("lower(title) like ?", "%#{params[:search_text].downcase}%")
+        url_results = Post.all.where("lower(url) like ?", "%#{params[:search_text].downcase}%")
 
         all_results = title_results + url_results
 
