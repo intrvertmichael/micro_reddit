@@ -2,7 +2,7 @@
 ![Old Reddit Logo](https://variety.com/wp-content/uploads/2014/10/reddit-logo.jpg?w=946)
 
 # MicroReddit
-Micro reddit is a remake of the old and beloved version of reddit when it first started. A simple styled ranking of links found on the internet.
+Micro reddit is a remake of the old and beloved version of reddit when it first started. A simple styled ranking of links found on the internet. The goal with this project was to recreate the old reddit from scratch. The fact it looks and works like reddit was the challenge. I have a different style than the one shown here so part of the challenge for me was to put my personal preferences aside and stick to the design given.
 
 ## Features
 
@@ -50,3 +50,7 @@ Have something to say about another comment ? You can reply to the post. Replies
 Micro Reddit was made using Ruby on Rails. Ruby on Rails was used for both the backend and the frontend. The interactivity was added using jquery and the CSS Style with Sass.
 
 ![ERD](https://i.imgur.com/ywHqByu.png)
+
+
+## Challenges
+I faced many challenges while working on this project. The main hurdle to overcome was that I had just learned Ruby and Rails 2 weeks prior. Rails and it's MVC pattern was something I did not have prior experience working with. I had heard of the MVC pattern and knew what the letters stood for but I had never worked on a project using it. Another barrier is that I had never used relational databases before this, only Document Style Databases. The difference in how to work with this was greater than I thought it would be and it took a lot of googling to learn things on the fly. Like for example what is a Join Table. Another barrier was that I wanted to get this done in a speedy manner so this project was completed in 13 days.
