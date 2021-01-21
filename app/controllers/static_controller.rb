@@ -58,7 +58,7 @@ class StaticController < ApplicationController
         amount_shown = 25
 
         param_page = params[:page].to_i
-        @final_page = all_posts.count / amount_shown
+        @final_page = all_posts.count / amount_shown - 1
 
         if param_page < 1
             @page = 0
