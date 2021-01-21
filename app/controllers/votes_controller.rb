@@ -13,10 +13,11 @@ class VotesController < ApplicationController
     def ajax_update
         pid = params[:post_id]
         uid = session[:user_id]
-        change = params[:value] == "up"? 1 : -1
+        value = params[:value] == "up"? 1 : -1
 
         if uid
-            set_vote(pid, uid, change)
+            set_vote(pid, uid, value)
+
             post = Post.find(pid)
             render json: {vote: @vote, points: post.points }
         else
@@ -25,20 +26,21 @@ class VotesController < ApplicationController
     end
 
 
-    def set_vote(pid, uid, change)
+    def set_vote(pid, uid, value)
         @vote = Vote.find_by(post_id: pid, user_id:uid)
 
         if @vote
-            if @vote.value == change
+            puts "there is a vote"
+            if @vote.value == value
                 @vote.value = 0
                 @vote.save
             else
-                @vote.value = change
+                @vote.value = value
                 @vote.save
             end
         else
-            amount = params[:change] == "up"? 1 : -1
-            Vote.create(user_id: uid, post_id: pid, value: amount)
+
+            @vote = Vote.create(user_id: uid, post_id: pid, value: value)
         end
     end
 end
