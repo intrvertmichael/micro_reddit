@@ -1,7 +1,8 @@
 
 ![Old Reddit Logo](https://variety.com/wp-content/uploads/2014/10/reddit-logo.jpg?w=946)
 
-See deployed version here! [microreddit on heroku](microreddit.herokuapp.com)
+See deployed version here! 
+[MicroReddit on heroku](microreddit.herokuapp.com)
 
 # MicroReddit
 Micro reddit is a remake of the old and beloved version of reddit when it first started. A simple styled ranking of links found on the internet. The goal with this project was to recreate the old reddit from scratch. The fact it looks and works like reddit was the challenge. I have a different style than the one shown here so part of the challenge for me was to put my personal preferences aside and stick to the design given.
