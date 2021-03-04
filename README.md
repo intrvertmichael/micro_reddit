@@ -2,6 +2,7 @@
 ![Old Reddit Logo](https://variety.com/wp-content/uploads/2014/10/reddit-logo.jpg?w=946)
 
 See deployed version here ! [MicroReddit on heroku](http://microreddit.herokuapp.com)
+
 Please give it a few seconds for the heroku cold start time.
 
 
