@@ -41,4 +41,5 @@ const ready = () => {
 	$('.comment-reply').on('click', commentReply)
 }
 
-$(window).on('load', ready)
+// $(window).on('load', ready)
+$(window).on('turbolinks:load', ready)
