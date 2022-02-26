@@ -1,31 +1,37 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.1'
 
+ruby '3.1.1'
+gem 'rails', '~> 7.0.2.2'
+
+# issues deplying possible fixes:
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
+gem 'net-smtp', require: false
 
-# Normalize.css is a customisable CSS file that makes browsers render all elements more consistently and in line with modern standards.
-gem 'normalize-rails'
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.2.2'
 
 # Adding jquery through rails
 gem 'jquery-rails'
 
+# Normalize.css is a customisable CSS file that makes browsers render all elements more consistently and in line with modern standards.
+gem 'normalize-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

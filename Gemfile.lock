@@ -266,6 +266,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.3)
   mimemagic!
+  net-smtp
   normalize-rails
   puma (~> 5.0)
   rack-cors
