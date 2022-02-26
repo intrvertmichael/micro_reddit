@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '3.1.1'
+
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+
 
 # Normalize.css is a customisable CSS file that makes browsers render all elements more consistently and in line with modern standards.
 gem 'normalize-rails'
@@ -9,7 +12,8 @@ gem 'normalize-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
 
-
+# Adding jquery through rails
+gem 'jquery-rails'
 
 
 # Use Puma as the app server
@@ -69,6 +73,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  #gem 'pg'
   gem 'rails_12factor'
 end
