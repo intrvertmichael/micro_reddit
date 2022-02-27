@@ -9,30 +9,36 @@ export const ajaxCommentVote = (e, value) => {
 }
 
 function post_api(result, e) {
+	e.preventDefault()
+	e.stopPropagation()
+
+	console.log('ready 2')
+
 	if (!result.vote) return $('.error').html(`<p> ${result.error} </p>`)
 
 	// points arrow
 	const value = result.vote.value
+	const closest = $(e.currentTarget)
 
 	if (value == 1) {
-		$(e.currentTarget).html("<img src='/assets/arrow_orange.png'/>")
-		$(e.currentTarget)
+		closest.html("<img src='/assets/arrow_orange.png'/>")
+		closest
 			.closest('.comment-votes')
 			.find('.comment-downvote')
 			.html("<img src='/assets/arrow.png'/>")
 	} else if (value == -1) {
-		$(e.currentTarget).html("<img src='/assets/arrow_orange.png'/>")
-		$(e.currentTarget)
+		closest.html("<img src='/assets/arrow_orange.png'/>")
+		closest
 			.closest('.comment-votes')
 			.find('.comment-upvote')
 			.html("<img src='/assets/arrow.png'/>")
 	} else {
-		$(e.currentTarget).html("<img src='/assets/arrow.png'/>")
+		closest.html("<img src='/assets/arrow.png'/>")
 	}
 
 	// points text
-	$(e.currentTarget)
-		.closest('.comment')
+	closest
+		.parentsUntil('.comment')
 		.find('.points')
 		.html(`${result.points} points`)
 }

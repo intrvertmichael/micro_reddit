@@ -21,8 +21,6 @@ Turbolinks.start()
 ActiveStorage.start()
 
 const ready = () => {
-	console.log('ready')
-
 	$('.register-btn').on('click', e => {
 		e.preventDefault()
 		$('.register-form').toggleClass('hidden')

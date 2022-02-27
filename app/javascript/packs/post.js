@@ -32,7 +32,7 @@ function post_api(result, e) {
 
 	// change points text
 	$(e.currentTarget)
-		.closest('.list-post')
+		.parentsUntil('.list-post')
 		.find('.points')
 		.html(`${result.points} points`)
 }
