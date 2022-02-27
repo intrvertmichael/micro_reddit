@@ -17,23 +17,27 @@
             <% end %>
         </div>
 
-        <div class='nav-bottom'>
-            <div class="sort-links">
+        <% if current_page?(:controller => 'static', :action => 'home') %>
+        <div class='nav-bottom' style='justify-content:space-between;'>
+                <div class="sort-links">
 
-                <% if $sort_type == "new" %>
-                    <%= link_to "top", sort_path(sort_type:"top") %>
-                    <%= link_to "new", sort_path(sort_type:"new"), class: "active" %>
-                    <%= link_to "hot", sort_path(sort_type:"hot") %>
-                <% elsif $sort_type == "hot" %>
-                    <%= link_to "top", sort_path(sort_type:"top") %>
-                    <%= link_to "new", sort_path(sort_type:"new") %>
-                    <%= link_to "hot", sort_path(sort_type:"hot"), class: "active" %>
-                <% else %>
-                    <%= link_to "top", sort_path(sort_type:"top"), class: "active" %>
-                    <%= link_to "new", sort_path(sort_type:"new") %>
-                    <%= link_to "hot", sort_path(sort_type:"hot") %>
-                <% end %>
-            </div>
+                    <% if $sort_type == "new" %>
+                        <%= link_to "top", sort_path(sort_type:"top") %>
+                        <%= link_to "new", sort_path(sort_type:"new"), class: "active" %>
+                        <%= link_to "hot", sort_path(sort_type:"hot") %>
+                    <% elsif $sort_type == "hot" %>
+                        <%= link_to "top", sort_path(sort_type:"top") %>
+                        <%= link_to "new", sort_path(sort_type:"new") %>
+                        <%= link_to "hot", sort_path(sort_type:"hot"), class: "active" %>
+                    <% else %>
+                        <%= link_to "top", sort_path(sort_type:"top"), class: "active" %>
+                        <%= link_to "new", sort_path(sort_type:"new") %>
+                        <%= link_to "hot", sort_path(sort_type:"hot") %>
+                    <% end %>
+                </div>
+            <% else %>
+        <div class='nav-bottom' style='justify-content:flex-end;'>
+            <% end %>
 
             <div class='search'>
                 <%= form_with url: search_url do |form| %>
@@ -42,5 +46,6 @@
                 <% end %>
             </div>
         </div>
+
     </div>
 </div>
