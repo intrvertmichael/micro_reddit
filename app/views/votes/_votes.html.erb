@@ -18,6 +18,4 @@
         <%= link_to image_tag("arrow.png"), vote_path(@post, :id => post.id, :change => "down"), method: :put, :class => "downvote" %>
     <% end %>
 
-
-    <%# post.votes.map(&:value) %>
 </div>
